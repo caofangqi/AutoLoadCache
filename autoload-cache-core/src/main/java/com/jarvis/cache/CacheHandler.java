@@ -23,13 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -396,7 +390,7 @@ public class CacheHandler {
             if (config.isPrintSlowLog() && useTime >= config.getSlowLoadTime()) {
                 String className = pjp.getTarget().getClass().getName();
                 if (log.isWarnEnabled()) {
-                    log.warn("{}.{}, use time:{}ms", className, pjp.getMethod().getName(), useTime);
+                    log.warn("{}.{}, use time:{}ms ,arguments:{}", className, pjp.getMethod().getName(), useTime, Arrays.toString(arguments));
                 }
             }
             return result;
